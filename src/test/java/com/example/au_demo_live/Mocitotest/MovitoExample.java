@@ -3,6 +3,7 @@ package com.example.au_demo_live.Mocitotest;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -16,6 +17,7 @@ public class MovitoExample {
     @Test
     public void testLinkedListGetElement_ThrowException_testAnyString(){
         final var list=mock(java.util.LinkedList.class);
-        when(list.add(anySt))
+        when(list.add(anyString())).thenThrow(new RuntimeException("you cannot insert data in list"));
+        assertThrows(RuntimeException.class,()->list.add("aman"));
     }
 }
